@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Choropleth Map with Plotly</title>
+</head>
+<body>
+
+<div id="choropleth-map"></div>
+<div id="mouse-coordinates"></div>
+
+<script>
+    // Sample data for the choropleth map
+    var data = [{
+        type: 'choropleth',
+        locationmode: 'USA-states',
+        locations: ['CA', 'NY', 'TX'],
+        z: [10, 20, 30],
+        text: ['California', 'New York', 'Texas'],
+        colorscale: 'Viridis'
+    }];
+
+    // Layout configuration for the map
+    var layout = {
+        geo: {
+            scope: 'usa',
+            showlakes: true,
+            lakecolor: 'rgb(255, 255, 255)'
+        }
+    };
+
+    // Create the choropleth map
+    Plotly.newPlot('choropleth-map', data, layout);
+
+    // Add event listener for mouse hover
+    document.getElementById('choropleth-map').on('plotly_hover', function(data) {
+        // Extract mouse coordinates
+        var x = data.points[0].x;
+        var y = data.points[0].y;
+
+        // Update the mouse coordinates div
+        document.getElementById('mouse-coordinates').innerText = 'Mouse Coordinates: X=' + x + ', Y=' + y;
+    });
+</script>
+
+</body>
+</html>

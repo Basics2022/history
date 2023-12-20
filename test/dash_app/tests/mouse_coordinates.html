@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse Coordinates</title>
+</head>
+<body>
+
+<p id="coordinates">Mouse coordinates: </p>
+
+<script>
+// Function to update mouse coordinates
+function updateCoordinates(event) {
+  // Get the mouse coordinates from the event
+  const x = event.clientX;
+  const y = event.clientY;
+
+  // Update the HTML element with the coordinates
+  document.getElementById('coordinates').innerText = `Mouse coordinates: (${x}, ${y})`;
+}
+
+// Add a mousemove event listener to the document
+document.addEventListener('mousemove', updateCoordinates);
+</script>
+
+</body>
+</html>
